@@ -1,0 +1,109 @@
+<div class="layout grid grid-cols-12">
+    <div class="sidebar flex flex-col col-span-2 md:col-span-3 lg:col-span-2 h-screen text-gray-200 bg-indigo-500">
+        <div class="logo flex justify-center items-center p-3">
+            <i class="fa fa-bolt mr-1"></i>
+            <p class="text-xl font-medium lg:text-xl md:text-sm">Punit's Dashboard</p>
+        </div>
+        <div class="tiles grow capitalize">
+            <div class="tile p-2">
+                <p class="text-sm text-gray-300 my-2">Dashboard</p>
+                <a href="#">
+                    <div class="tile-option flex bg-white text-indigo-500 p-2 rounded-lg justify-start items-center">
+                        <i class="fa fa-box mr-2"></i>
+                        <p>Dashbaord</p>
+                    </div>
+                </a>
+            </div>
+            <div class="tile p-2 text-sm">
+                <p class="text-sm text-gray-300 my-2">Dashboard</p>
+                <a href="#">
+                    <div class="tile-option flex hover:bg-white hover:text-indigo-500 p-2 rounded-lg justify-around items-center">
+                        <i class="fa fa-key mr-2"></i>
+                        <p class="grow">set Roles</p>
+                        <i class="fa fa-angle-right text-xs text-white"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="tile-option flex hover:bg-white hover:text-indigo-500 p-2 rounded-lg justify-start items-center">
+                        <i class="fa fa-users mr-2"></i>
+                        <p>Users Permission</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="border-t bg-gradient-to-t from-indigo-500 to-indigo-600 flex justify-around">
+            <div class=" p-3 flex justify-center items-center">
+                <i class="fa fa-cog"></i>
+            </div>
+            <div class=" p-3 flex justify-center items-center">
+                <i class="fa fa-heart"></i>
+            </div>
+            <div class=" p-3 flex justify-center items-center">
+                <i class="fa fa-power-off"></i>
+            </div>
+            <div class=" p-3 flex justify-center items-center">
+                <i class="fa fa-bolt"></i>
+            </div>
+        </div>
+    </div>
+    <div class="main col-span-10 md:col-span-9 lg:col-span-10 bg-gray-200 h-screen overflow-auto p-3 grid grid-cols-12">
+        <div class="col-span-12 rounded-lg mb-2">
+            <div class="totle-users bg-white shadow-sm text-lg max-w-fit p-3 rounded-lg">
+                <p class="text-4xl text-gray-700 font-bold "><?php
+                                                                echo $data2->count();
+                                                                ?></p>
+                <p class="text-gray-500">permissions</p>
+            </div>
+        </div>
+        <div class="col-span-12 rounded-lg bg-white mb-2">
+            <div class="p-3 ">
+                <?php
+                foreach ($data2 as $user) {
+                ?>
+                    <div class="my-1">
+                        <p class="capitalize"><?php echo $user->role_name; ?> <a href="admin/edit?bearer=<?php echo $token; ?>&name=<?php echo $user->role_name; ?>"><button class="text-white bg-indigo-500 px-2 text-sm rounded-full"><i class="fa fa-edit"></i> Edit</button></a></p>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+        <div class="col-span-12 rounded-lg bg-white p-3 shadow-lg">
+            <div class="text-gray-600 font-medium">
+                <form action="/admin?role=admin" method="post">
+                    <div class="p-2 flex">
+                        <input type="text" name="name" id="" placeholder="enter role name" class="rolename placeholder:text-gray-300 placeholder:italic ml-2 appearance-none rounded-lg border-gray-200" required />
+                        <button class="border rounded-lg px-2 ml-2"><i class="fa fa-eye text-sm"></i> View Roles</button>
+                    </div>
+                    <?php
+                    foreach ($data as $k => $actions) {
+                    ?>
+                        <p class="p-3 border rounded-t-lg rounded-bl-lg"><i class="fa fa-angle-right"></i> <?php echo $k; ?></p>
+                        <div class="ml-5 font-normal border p-3 bg-gray-200 rounded-br-lg">
+                            <?php
+                            ?>
+                            <?php
+                            foreach ($actions as $action) {
+                            ?>
+                                <label for="1" class="flex justify-start items-center">
+                                    <i class="fa fa-random text-sm mr-2"></i>
+                                    <input type="checkbox" name="<?php echo $k . '<->' . $action; ?>" class="radio appearance-none checked:bg-indigo-500 border-2 border-indigo-500" id="">
+                                    <p class="ml-2"><?php echo $action; ?></p>
+
+                                </label>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+            </div>
+            <button type="submit" class="p-2 m-2 rounded-lg bg-indigo-500 text-white">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+<?php
+$this->assets->OutputJs();
+?>

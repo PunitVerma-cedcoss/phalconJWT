@@ -1,0 +1,33 @@
+<div class="h-screen capitalize w-screen bg-gray-200 flex justify-center items-center">
+    <div class="flex text-slate-700 bg-white rounded-lg shadow-sm w-3/4<div class=" h-screen w-screen bg-gray-200 flex justify-center items-center">
+        <table class="p-3">
+            <thead>
+                <tr class="shadow">
+                    <th class="p-3 border">Customer Name</th>
+                    <th class="p-3 border">Customer Address</th>
+                    <th class="p-3 border">Zipcode</th>
+                    <th class="p-3 border">Product id</th>
+                    <th class="p-3 border">Product Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($data as $order) {
+                ?>
+                    <tr class="odd:bg-gray-100 leading-relaxed even:bg-white cursor-pointer hover:bg-gray-100">
+                        <td class="p-3 border"><?php echo $order->customer_name ?></td>
+                        <td class="p-3 border"><?php echo $order->customer_address ?></td>
+                        <td class="p-3 border"><?php echo $order->zipcode ?></td>
+                        <td class="p-3 border"><?php echo $order->product_id ?></td>
+                        <td class="p-3 border"><?php echo $order->quantity ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+</div>

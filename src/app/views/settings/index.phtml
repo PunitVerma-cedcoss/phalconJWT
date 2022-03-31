@@ -1,0 +1,58 @@
+<div class="h-screen w-screen bg-gray-200 flex justify-center items-center">
+    <form action="/settings" method="post" class="text-slate-700 bg-white p-3 rounded-lg shadow-sm w-3/4">
+        <div class="flex">
+            <div class="w-full mx-1">
+                <label for="name" class="">
+                    <p class="text-md p-1">Default Price</p>
+                    <input type="text" name="dprice" value="<?php echo $data->default_price; ?>" placeholder="Default Price" class="w-full rounded-lg border border-slate-300 shadow" id="">
+                </label>
+            </div>
+            <div class="w-full mx-1">
+                <label for="name" class="">
+                    <!-- <span class="bg-indigo-500 p-1 rounded-full mr-1 text-gray-100 text-xs">trending</span> -->
+                    <p class="text-md p-1">Default Stock</p>
+                    <input type="text" name="dstock" value="<?php echo $data->default_stock; ?>" placeholder="Default Stock" class="placeholder:italic w-full rounded-lg border border-slate-300 shadow" id="">
+                </label>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="w-full mx-1">
+                <label for="name" class="">
+                    <p class="text-md p-1">Default Zipcode</p>
+                    <input type="text" name="dzipcode" value="<?php echo $data->default_zipcode; ?>" placeholder="Default Zipcode" class="w-full rounded-lg border border-slate-300 shadow" id="">
+                </label>
+            </div>
+            <div class="w-full mx-1">
+                <label for="name" class="">
+                    <!-- <span class="bg-indigo-500 p-1 rounded-full mr-1 text-gray-100 text-xs">trending</span> -->
+                    <p class="text-md p-1">Title optimization</p>
+                    <select name="titleopti" id="" class="w-full rounded-lg border border-slate-300 shadow">
+                        <option value="with_tag" <?php echo $data->title_optimization == "with_tag" ? "selected" : ""; ?>>With Tags</option>
+                        <option value="without_tag" <?php echo $data->title_optimization == "without_tag" ? "selected" : ""; ?>>Without Tags</option>
+                    </select>
+                    <!-- <input type="text" name="stock" placeholder="stock" class="w-full rounded-lg border border-slate-300 shadow" id=""> -->
+                </label>
+            </div>
+        </div>
+        <?php
+        if (isset($message)) {
+        ?>
+            <div class="mt-3 mx-3 text-center msg p-3 rounded-lg bg-gray-200">
+                <?php
+                if ($message["type"] == "success") {
+                ?>
+                    <p class="text-green-500"><?php echo $message["message"] ?></p>
+                <?php
+                } elseif ($message["type"] == "error") {
+                ?>
+                    <p class="text-red-500"><?php echo $message["message"] ?></p>
+            </div>
+    <?php
+                }
+            }
+    ?>
+    <div class="flex px-3 pt-3">
+        <button class="w-full p-2 text-gray-100 rounded-lg bg-indigo-500"><i class="fa fa-save text-sm"></i> Save Settings</button>
+    </div>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+<div class="h-screen w-screen flex text-gray-700 justify-center items-center">
+    <?php
+    if (isset($token)) {
+    ?>
+        <div class="flex flex-col justify-start w-1/2 items-center">
+            <p>your Token : </p>
+            <div class="overflow-auto w-1/2 text-justify token bg-gray-200 text-indigo-500 p-3 text-center border rounded-lg mt-3">
+                <p><?php echo $token; ?></p>
+            </div>
+        </div>
+    <?php
+    } else {
+    ?>
+        <form action="#" method="post" class="flex flex-col">
+            <label for="logo" class="text-center">
+                <i class="fa fa-box text-7xl text-indigo-500"></i>
+            </label>
+            <label for="email">
+                <p class="p-2"><i class="fa fa-envelope text-sm text-indigo-500"></i> Email</p>
+                <input type="text" class="rounded-lg border-gray-300" name="email" id="" placeholder="email here.." required>
+            </label>
+            <label for="email">
+                <p class="p-2"><i class="fa fa-lock text-sm text-indigo-500"></i> password</p>
+                <input type="password" class="rounded-lg border-gray-300" name="password" id="" placeholder="password here.." required>
+            </label>
+            <label for="email">
+                <p class="p-2"><i class="fa fa-users text-sm text-indigo-500"></i> role</p>
+                <select name="selectrole" id="" class="rounded-lg border-gray-300 w-full" required>
+                    <option value="">Select a Role</option>
+                    <?php
+                    foreach ($data as $role) {
+                    ?>
+                        <option value="<?php echo $role->role_name; ?>"><?php echo $role->role_name; ?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+            </label>
+            <label for="rem" class="flex items-center mt-3 mx-1">
+                <input type="checkbox" class="mr-2 appearance-none checked:bg-indigo-500 border-indigo-500 border-2" name="" id="">
+                <p>don't remember me</p>
+            </label>
+            <button type="submit" class="border-2 text-indigo-500 p-2 mt-4 hover:bg-indigo-500 hover:text-white shadow-lg rounded-lg border-indigo-500">Register</button>
+        </form>
+    <?php
+    }
+    ?>
+</div>

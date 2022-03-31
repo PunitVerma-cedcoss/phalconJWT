@@ -1,0 +1,39 @@
+<div class="h-screen capitalize w-screen bg-gray-200 flex justify-center items-center">
+    <div class="flex text-slate-700 bg-white rounded-lg shadow-sm w-3/4<div class=" h-screen w-screen bg-gray-200 flex justify-center items-center">
+        <table class="p-3">
+            <thead>
+                <tr class="shadow">
+                    <th class="p-3 border">Product Name</th>
+                    <th class="p-3 border">Product Desc</th>
+                    <th class="p-3 border">Product Tags</th>
+                    <th class="p-3 border">Product Price</th>
+                    <th class="p-3 border">Product Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($data as $product) {
+                ?>
+                    <tr class="odd:bg-gray-100 even:bg-white cursor-pointer hover:bg-gray-100">
+                        <td class="p-3 border"><?php echo $product->product_name ?></td>
+                        <td class="p-3 border"><?php echo $product->product_desc ?></td>
+                        <td class="p-3 border"><?php
+                                                foreach (explode(",", $product->product_tags) as $tag) {
+                                                ?>
+                                <span class="px-2 cursor-pointer hover:shadow-lg hover:bg-indigo-700 py-1 shadow text-gray-100 bg-indigo-500 rounded-full"><?php echo $tag; ?> <i class="fa fa-plus-circle rotate-45 hover:text-indigo-500"></i></span>
+                            <?php
+                                                }
+                            ?>
+                        </td>
+                        <td class="p-3 border"><?php echo $product->product_price ?></td>
+                        <td class="p-3 border"><?php echo $product->product_stock ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</div>
